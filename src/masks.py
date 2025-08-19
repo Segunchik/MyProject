@@ -14,6 +14,6 @@ def get_mask_account(account_number: int) -> str:
     return ''.join("**" + account_number_str[-4:])
 
 
-if __name__ != "main.py":
-    print(get_mask_card_number(1234567891234567))
-    print(get_mask_account(12345678945613))
+# if __name__ != "main.py":
+#    print(get_mask_card_number(1234567891234567))
+#    print(get_mask_account(12345678945613))
