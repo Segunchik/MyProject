@@ -15,7 +15,9 @@ def test_mask_account_card_valid(account_card: str, masked: str) -> None:
     assert mask_account_card(account_card) == masked
 
 
-@pytest.mark.parametrize("account_number", ["Счет 123", 123, "asd 1", 123456789123456789])
+@pytest.mark.parametrize(
+    "account_number", ["Счет 123", 123, "asd 1", 123456789123456789]
+)
 def test_mask_account_error(account_number, error_account):
     assert mask_account_card(account_number) == error_account
 
