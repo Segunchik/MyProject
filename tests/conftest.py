@@ -9,3 +9,8 @@ def error_card_number() -> str:
 @pytest.fixture
 def error_account_number() -> str:
     return "Введен некорректный номер счета"
+
+
+@pytest.fixture
+def error_account() -> str:
+    return "Введены некорректные данные"

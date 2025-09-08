@@ -12,14 +12,23 @@ def mask_account_card(account_card: str) -> str:
 
     Возвращает строку с замаскированными цифрами
     """
-    parts_of_account = account_card.split()
+    if isinstance(account_card, str):
+        parts_of_account = account_card.split()
+    else:
+        return "Введены некорректные данные"
 
     if parts_of_account[0].lower() == "счет":
-        parts_of_account[-1] = get_mask_account(int(parts_of_account[-1]))
-        return " ".join(parts_of_account)
+        if len(parts_of_account[-1]) == 20:
+            parts_of_account[-1] = get_mask_account(int(parts_of_account[-1]))
+            return " ".join(parts_of_account)
+        else:
+            return "Введены некорректные данные"
     else:
-        parts_of_account[-1] = get_mask_card_number(int(parts_of_account[-1]))
-        return " ".join(parts_of_account)
+        if len(parts_of_account[-1]) == 16:
+            parts_of_account[-1] = get_mask_card_number(int(parts_of_account[-1]))
+            return " ".join(parts_of_account)
+        else:
+            return "Введены некорректные данные"
 
 
 def get_date(date_string: str) -> str:
