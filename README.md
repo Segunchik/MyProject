@@ -14,6 +14,8 @@ git clone https://github.com/Segunchik/MyProject.git
 ## Требования:
 - Python 3.8+
 - Poetry (менеджер зависимостей)
+- Pytest (фреймворк для тестирования)
+- pytest-cov (библиотека для анализа покрытия тестами)
 ## Установка Poetry
 ### Для Linux/macOS
 ```
@@ -28,8 +30,17 @@ curl -sSL https://install.python-poetry.org | python3 -
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc  # или .zshrc
 source ~/.bashrc
 ```
+## Установка Pytest
+'''
+poetry add --group dev pytest
+'''
 
-## Установка:
+## Установка pytest-cov
+'''
+poetry add --group dev pytest-cov
+'''
+
+## Установка приложения:
 
 Клонируйте репозиторий:
 ```
