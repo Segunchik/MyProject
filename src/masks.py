@@ -11,12 +11,7 @@ def get_mask_card_number(card_number: int) -> str:
         # Преобразуем номер в строку
         card_number_str = str(card_number)
         mask_cardnumber = "".join(
-            card_number_str[:4]
-            + " "
-            + card_number_str[4:6]
-            + "** ****"
-            + " "
-            + card_number_str[12:]
+            card_number_str[:4] + " " + card_number_str[4:6] + "** ****" + " " + card_number_str[12:]
         )
         return mask_cardnumber
 
