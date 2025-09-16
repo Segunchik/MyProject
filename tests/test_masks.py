@@ -32,8 +32,6 @@ def test_get_mask_account_valid(account_number: int, mask_account_number: str) -
     assert get_mask_account(account_number) == mask_account_number
 
 
-@pytest.mark.parametrize(
-    "account_number", ["123", 123, "asd", 123456789123456789102, [1, 2, 3]]
-)
+@pytest.mark.parametrize("account_number", ["123", 123, "asd", 123456789123456789102, [1, 2, 3]])
 def test_get_mask_account_error(account_number, error_account_number):
     assert get_mask_account(account_number) == error_account_number
