@@ -3,7 +3,7 @@ from typing import Callable, Any
 from time import time
 
 
-def log(filename: str | None = None) -> Callable:
+def log(filename: str | None = None):  # -> Callable:
     """
     Декоратор для логирования вызовов функций с возможностью записи в файл.
     Регистрирует время вызова, имя функции, аргументы, результат и ошибки.
@@ -26,11 +26,7 @@ def log(filename: str | None = None) -> Callable:
 
             except Exception as e:
                 result = None
-                error_info = {
-                    "type": type(e).__name__,
-                    "message": str(e),
-                    "input": signature
-                }
+                error_info = {"type": type(e).__name__, "message": str(e), "input": signature}
                 status = "ошибка"
 
             end_time = time()  # Замеряем время окончания
@@ -45,10 +41,7 @@ def log(filename: str | None = None) -> Callable:
             )
 
             if error_info:
-                log_message += (
-                    f"Тип ошибки: {error_info['type']}\n"
-                    f"Сообщение: {error_info['message']}\n"
-                )
+                log_message += f"Тип ошибки: {error_info['type']}\n" f"Сообщение: {error_info['message']}\n"
             else:
                 log_message += f"Результат: {result}\n"
 
