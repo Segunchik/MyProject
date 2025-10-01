@@ -67,3 +67,6 @@ git clone https://github.com/Segunchik/MyProject.git
 #### - filter_by_currency(transactions: list, currency: str = "USD") -> Iterator[dict]: - Фильтрует список транзакций по ключу currency
 #### - transaction_descriptions(transactions: list) -> list: - принимает список словарей с транзакциями и возвращает описание каждой операции по очереди.
 #### - card_number_generator(start: int, end: int) -> Generator[str, Any, None]: - Функция генератор, который выдает номера банковских карт в формате XXXX XXXX XXXX XXXX.
+
+### Модуль decorators.py содержит функцию:
+#### - log - Декоратор для логирования вызовов функций с возможностью записи в файл. Регистрирует время вызова, имя функции, аргументы, результат и ошибки.

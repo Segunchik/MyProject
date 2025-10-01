@@ -3,8 +3,8 @@ from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
 
 
-# print(get_mask_card_number(1234567891234567))
-# print(get_mask_account(59645324867457891268))
+print(get_mask_card_number(1234567891234567))
+print(get_mask_account(59645324867457891268))
 
 data_list = [
     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -62,11 +62,11 @@ transactions = [
 ]
 
 
-# print(filter_by_state(data_list))
-# print(sort_by_date(data_list))
+print(filter_by_state(data_list))
+print(sort_by_date(data_list))
 
 usd_transactions = filter_by_currency(transactions, "USD")
-# print(list(usd_transactions))
+
 for _ in range(2):
     print(next(usd_transactions))
 
