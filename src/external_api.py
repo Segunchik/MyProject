@@ -8,15 +8,16 @@ load_dotenv()
 
 API_KEY_EXCHANGE: str | None = os.getenv("API_KEY_EXCHANGE")
 
+
 def sum_transaction_in_rub(transaction: dict) -> float:
-    '''
+    """
     Функция, которая принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях, тип данных — float.
     Если транзакция была в USD или EUR, происходит обращение к внешнему API для получения текущего курса валют и
     конвертации суммы операции в рубли. Для конвертации валюты использует Exchange Rates Data API:
     https://apilayer.com/exchangerates_data-api.
     :param transaction: - словарь с транзакцией
     :return: - сумма в рублях float
-    '''
+    """
 
     if transaction["operationAmount"]["currency"]["code"] == "RUB":
         amount_transaction: float = transaction["operationAmount"]["amount"]
