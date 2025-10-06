@@ -11,12 +11,18 @@ def read_json_file(path: str) -> list[dict[str, Any]]:
     try:
         file_path = Path(path)
         if not file_path.exists():
-            return []
+            raise FileNotFoundError
 
         with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
             if isinstance(data, list):
                 return data
-            return []
-    except Exception:
+            else:
+                raise ValueError
+
+    except json.JSONDecodeError:
+        return []
+    except FileNotFoundError:
+        return []
+    except ValueError:
         return []
