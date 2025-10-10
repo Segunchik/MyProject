@@ -1,5 +1,3 @@
-import unittest
-from unittest.mock import mock_open, patch
 import json
 import os
 from pathlib import Path
@@ -9,10 +7,7 @@ from src.utils import read_json_file
 
 def test_valid_file():
     # Создаем тестовый JSON файл
-    test_data = [
-        {"id": 1, "amount": 100.0, "currency": "RUB"},
-        {"id": 2, "amount": 200.0, "currency": "USD"}
-    ]
+    test_data = [{"id": 1, "amount": 100.0, "currency": "RUB"}, {"id": 2, "amount": 200.0, "currency": "USD"}]
     test_path = Path("test_file.json")
 
     # Записываем тестовые данные в файл
