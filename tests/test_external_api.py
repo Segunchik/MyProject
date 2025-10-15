@@ -12,7 +12,6 @@ load_dotenv()
 API_KEY_EXCHANGE: str | None = os.getenv("API_KEY_EXCHANGE")
 
 
-
 # Тестовая транзакция
 TEST_TRANSACTION_RUB = {"operationAmount": {"amount": 1000.0, "currency": {"code": "RUB"}}}
 
