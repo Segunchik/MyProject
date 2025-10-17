@@ -79,10 +79,6 @@ for card_number in card_number_generator(1, 5):
     print(card_number)
 
 
-print(csv_reader('data/transactions.csv'))
+print(csv_reader("data/transactions.csv"))
 
-# print(type(excel_reader('data/transactions_excel.xlsx')))
-list_dict = excel_reader('data/transactions_excel.xlsx')
-#for record in list_dict:
-#    print(record)
-
+print(excel_reader("data/transactions_excel.xlsx"))
