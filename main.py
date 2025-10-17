@@ -1,3 +1,4 @@
+from src.data_file_reader import csv_reader, excel_reader
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
@@ -76,3 +77,12 @@ for _ in range(5):
 
 for card_number in card_number_generator(1, 5):
     print(card_number)
+
+
+print(csv_reader('data/transactions.csv'))
+
+# print(type(excel_reader('data/transactions_excel.xlsx')))
+list_dict = excel_reader('data/transactions_excel.xlsx')
+#for record in list_dict:
+#    print(record)
+
