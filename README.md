@@ -40,6 +40,11 @@ poetry add --group dev pytest
 poetry add --group dev pytest-cov
 '''
 
+## Установка библиотеки pandas
+'''
+poetry add pandas
+'''
+
 ## Установка приложения:
 
 Клонируйте репозиторий:
@@ -70,3 +75,8 @@ git clone https://github.com/Segunchik/MyProject.git
 
 ### Модуль decorators.py содержит функцию:
 #### - log - Декоратор для логирования вызовов функций с возможностью записи в файл. Регистрирует время вызова, имя функции, аргументы, результат и ошибки.
+
+
+### Модуль data_file_reader.py содержит функции:
+#### - csv_reader(path_file: str) -> list[dict]|str: - Читает файл формата csv и возвращает список словарей с его содержимым.
+#### - excel_reader(path_file: str) -> list[dict]|str: - Функция принимает на вход путь к файлу в формате EXCEL и возвращает список словарей с его содержимым
