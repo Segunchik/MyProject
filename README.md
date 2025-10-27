@@ -67,6 +67,8 @@ git clone https://github.com/Segunchik/MyProject.git
 ### Модуль processing.py содержит функции:
 #### - filter_by_state(data: list, state: str = "EXECUTED") -> list: - Фильтрует список словарей по значению ключа state.
 #### - sort_by_date(data_list: list, reverse = True) -> list: - Сортирует список словарей по дате в поле 'date'.
+#### - process_bank_search(operations: list[dict], search_str: str) -> list[dict] - Функция фильтрации по описанию
+#### - process_bank_operations(transactions: list[dict], categories: list) -> dict[str, int]: - Функция фильтрации по статусу операции
 
 ### Модуль generators.py содержит функции:
 #### - filter_by_currency(transactions: list, currency: str = "USD") -> Iterator[dict]: - Фильтрует список транзакций по ключу currency
