@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 
 import requests
 from dotenv import load_dotenv
@@ -19,25 +20,47 @@ def sum_transaction_in_rub(transaction: dict) -> float:
     :return: - сумма в рублях float
     """
 
-    if transaction["operationAmount"]["currency"]["code"] == "RUB":
-        amount_transaction: float = transaction["operationAmount"]["amount"]
-    else:
-        url: str = "https://api.apilayer.com/exchangerates_data/convert"
-        payload: dict = {
-            "amount": transaction["operationAmount"]["amount"],
-            "from": transaction["operationAmount"]["currency"]["code"],
-            "to": "RUB",
-        }
-        headers: dict = {"apikey": API_KEY_EXCHANGE}
+    if "operationAmount" in transaction:
+        if transaction["operationAmount"]["currency"]["code"] == "RUB":
+            amount_transaction: float = transaction["operationAmount"]["amount"]
+        else:
+            url: str = "https://api.apilayer.com/exchangerates_data/convert"
+            payload: dict = {
+                "amount": transaction["operationAmount"]["amount"],
+                "from": transaction["operationAmount"]["currency"]["code"],
+                "to": "RUB",
+            }
+            headers: dict = {"apikey": API_KEY_EXCHANGE}
 
-        try:
-            response: Response = requests.get(url, headers=headers, params=payload)
-            print(response.json())
-            result: dict = response.json()
+            try:
+                response: Response = requests.get(url, headers=headers, params=payload)
+                print(response.json())
+                result: dict = response.json()
 
-            amount_transaction: float = result["result"]
+                amount_transaction: float = result["result"]
+                return amount_transaction
+            except Exception as e:
+                print(f"Непредвиденная ошибка: {str(e)}")
+                raise Exception("API error") from e
+    elif "currency_code" in transaction:
+        if transaction["currency_code"] == "RUB":
+            amount_transaction: float = transaction["amount"]
+        else:
+            url: str = "https://api.apilayer.com/exchangerates_data/convert"
+            payload: dict = {
+                "amount": transaction["amount"],
+                "from": transaction["currency_code"],
+                "to": "RUB",
+            }
+            headers: dict = {"apikey": API_KEY_EXCHANGE}
 
-        except Exception as e:
-            print(f"Непредвиденная ошибка: {str(e)}")
-            raise Exception("API error") from e
-    return amount_transaction
+            try:
+                response: Response = requests.get(url, headers=headers, params=payload)
+                print(response.json())
+                result: dict = response.json()
+                pprint(result)
+                amount_transaction: float = result["result"]
+                return amount_transaction
+            except Exception as e:
+                print(f"Непредвиденная ошибка: {str(e)}")
+                raise Exception("API error") from e
